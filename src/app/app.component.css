@@ -1,0 +1,9 @@
+.input-user,
+.input-email,
+.select-country,
+.select-city {
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: none;
+  width: 300px;
+}
