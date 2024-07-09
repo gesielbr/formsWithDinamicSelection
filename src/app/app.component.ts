@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgForm } from '@angular/forms';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { RouterOutlet } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-root',
@@ -48,7 +49,7 @@ export class AppComponent implements OnInit {
     return this.cities[country] || [];
   }
 
-  onSubmit(myForm: NgForm) {
+  /* onSubmit(myForm: NgForm) {
     if (myForm.valid) {
       const formData = {
         user: this.user,
@@ -59,6 +60,31 @@ export class AppComponent implements OnInit {
       console.log('Form Submitted', formData);
     } else {
       alert('Please fill up the fields\nPor favor, preencha os campos');
+    }
+  } */
+
+  onSubmit(myForm: NgForm) {
+    if (myForm.valid) {
+      const formData = {
+        user: this.user,
+        email: this.email,
+        country: this.selectedCountry,
+        city: this.city,
+      };
+      console.log('Form Submitted', formData);
+      Swal.fire({
+        title: 'Success!',
+        text: 'Formulário enviado, verifique o console.log do navegador',
+        icon: 'success',
+        confirmButtonText: 'OK',
+      });
+    } else {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Por favor, preencha os campos',
+        icon: 'error',
+        confirmButtonText: 'OK',
+      });
     }
   }
 }
