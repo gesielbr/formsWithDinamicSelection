@@ -1,4 +1,4 @@
-<div class="section bg-light">
+<div class="section main-form">
   <form
     action=""
     class="form-container"
@@ -6,7 +6,7 @@
     (ngSubmit)="onSubmit(myForm)"
   >
     <div class="row g-3 align-items-center p-3">
-      <div class="col-sm-3">
+      <div class="col-md-6 col-lg-3">
         <label for="name"
           >Name
           <input
@@ -18,7 +18,7 @@
           />
         </label>
       </div>
-      <div class="col-sm-3">
+      <div class="col-md-6 col-lg-3">
         <label for="name"
           >Email
           <input
@@ -30,13 +30,14 @@
           />
         </label>
       </div>
-      <div class="col-sm-3">
+      <div class="col-md-6 col-lg-3">
         <label for="country"
           >Country
           <select
             class="select select-country"
             name="select"
             [(ngModel)]="selectedCountry"
+            (ngModelChange)="onCountryChange($event)"
           >
             <optgroup>
               <option *ngFor="let country of countries" [value]="country.value">
@@ -46,7 +47,7 @@
           </select>
         </label>
       </div>
-      <div class="col-sm-3">
+      <div class="col-md-6 col-lg-3">
         <label for="city"
           >City
           <select class="select select-city" name="city" [(ngModel)]="city">
@@ -61,11 +62,14 @@
           </select>
         </label>
       </div>
-      <div class="row g-3">
+      <div class="col-sm-12 d-flex justify-content-center">
+        <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+      <!-- <div class="row g-3">
         <div class="col-sm-12 d-flex justify-content-center">
           <button type="submit" class="btn btn-success">Submit</button>
         </div>
-      </div>
+      </div> -->
     </div>
   </form>
 </div>

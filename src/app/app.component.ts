@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgForm } from '@angular/forms';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
@@ -9,13 +9,14 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [RouterOutlet, CommonModule, FormsModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'formsWithDinamicSelection';
   user: string = '';
   email: string = '';
   city: string = '';
+  selectedCountry: string = '';
 
   countries = [
     { name: 'USA', value: 'usa' },
@@ -26,8 +27,22 @@ export class AppComponent {
   cities: { [key: string]: string[] } = {
     usa: ['New York', 'Los Angeles', 'Chicago'],
     canada: ['Toronto', 'Vancouver', 'Montreal'],
-    uk: ['London', 'Manchester', 'Birmigham'],
+    uk: ['London', 'Manchester', 'Birmingham'],
   };
+
+  ngOnInit() {
+    this.selectedCountry = this.countries[0].value;
+    this.updateCity(this.selectedCountry);
+  }
+
+  updateCity(country: string) {
+    const cities = this.cities[country];
+    this.city = cities ? cities[0] : '';
+  }
+
+  onCountryChange(country: string) {
+    this.updateCity(country);
+  }
 
   getCitiesByCountry(country: string): string[] {
     return this.cities[country] || [];
@@ -43,9 +58,7 @@ export class AppComponent {
       };
       console.log('Form Submitted', formData);
     } else {
-      alert('Please fill up the fields');
+      alert('Please fill up the fields\nPor favor, preencha os campos');
     }
   }
-
-  selectedCountry = this.countries[0].value;
 }

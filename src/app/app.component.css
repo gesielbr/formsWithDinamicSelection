@@ -1,9 +1,16 @@
-.input-user,
-.input-email,
-.select-country,
-.select-city {
-  padding: 0.5rem;
-  border-radius: 10px;
-  border: none;
-  width: 300px;
+.main-form {
+  background-color: #bde0fe;
+  label {
+    display: block;
+    .input-user,
+    .input-email,
+    .select-country,
+    .select-city {
+      padding: 0.75rem;
+      border-radius: 10px;
+      border: none;
+      width: 100%;
+      max-width: 100%;
+    }
+  }
 }
