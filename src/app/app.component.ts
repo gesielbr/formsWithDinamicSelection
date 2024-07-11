@@ -43,6 +43,16 @@ export class AppComponent implements OnInit {
 
   onCountryChange(country: string) {
     this.updateCity(country);
+    console.log('onCountryChange - country:', country);
+  }
+
+  onSelectChange(event: Event) {
+    console.log('onSelectChange - event:', event);
+    console.log('onSelectChange - event target:', event.target);
+    console.log(
+      'onSelectChange - event target value:',
+      (event.target as HTMLSelectElement).value
+    );
   }
 
   getCitiesByCountry(country: string): string[] {

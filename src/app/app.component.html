@@ -38,6 +38,7 @@
             name="select"
             [(ngModel)]="selectedCountry"
             (ngModelChange)="onCountryChange($event)"
+            (change)="onSelectChange($event)"
           >
             <optgroup>
               <option *ngFor="let country of countries" [value]="country.value">
